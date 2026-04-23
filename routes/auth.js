@@ -34,9 +34,13 @@ import jwt from "jsonwebtoken"
 
 // LOGIN
 router.post("/login", async (req, res) => {
-  const { email, password } = req.body
-
   try {
+    const { email, password } = req.body
+
+    if (!email || !password) {
+      return res.status(400).json({ message: "All fields required" })
+    }
+
     const user = await User.findOne({ email })
 
     if (!user) {
@@ -65,8 +69,8 @@ router.post("/login", async (req, res) => {
     })
 
   } catch (error) {
-    res.status(500).json({ error: error.message })
+    console.log("LOGIN ERROR:", error)  // 🔥 VERY IMPORTANT
+    res.status(500).json({ message: "Server error" })
   }
 })
-
 export default router
