@@ -19,9 +19,11 @@ app.get("/", (req, res) => {
 })
 
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB Connected"))
-  .catch(err => console.log(err))
-
+  .then(() => console.log("✅ MongoDB Connected"))
+  .catch(err => {
+    console.log("❌ Mongo ERROR:", err.message)
+  })
+console.log("MONGO URI:", process.env.MONGO_URI)
   app.use("/api", protectedRoutes)
 app.use("/api/auth", authRoutes)
 const PORT = process.env.PORT || 5000
