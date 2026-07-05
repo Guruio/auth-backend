@@ -47,9 +47,9 @@ npm start
 Create a `.env` file.
 
 ```env
-MONGO_URI=your_mongodb_connection_string
+MONGO_URI=mongodb://guru1:guru123@ac-krlcvth-shard-00-00.aurzmmr.mongodb.net:27017,ac-krlcvth-shard-00-01.aurzmmr.mongodb.n
 
-JWT_SECRET=your_secret_key
+JWT_SECRET=superrsecretkey
 ```
 
 ---
