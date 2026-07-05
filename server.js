@@ -1,30 +1,33 @@
-import express from "express"
-import mongoose from "mongoose"
-import cors from "cors"
-import dotenv from "dotenv"
-import authRoutes from "./routes/auth.js"
-import protectedRoutes from "./routes/protected.js"
+import mongoose from "mongoose";
 
+const connectDB = async () => {
+  try {
+    console.log("🚀 Connecting to MongoDB...");
+    console.log("URI:", process.env.MONGO_URI);
 
-dotenv.config()
+    const conn = await mongoose.connect(process.env.MONGO_URI, {
+      serverSelectionTimeoutMS: 30000,
+    });
 
-const app = express()
+    console.log(`✅ Mongo Connected: ${conn.connection.host}`);
 
-app.use(cors())
-app.use(express.json())
+  } catch (error) {
 
+    console.log("❌ FULL RAW ERROR START");
+    console.log(error);
+    console.log("❌ FULL RAW ERROR END");
 
-app.get("/", (req, res) => {
-  res.send("API Running 🚀")
-})
+    console.log("❌ MESSAGE:");
+    console.log(error.message);
 
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ MongoDB Connected"))
-  .catch(err => {
-    console.log("❌ Mongo ERROR:", err.message)
-  })
-console.log("MONGO URI:", process.env.MONGO_URI)
-  app.use("/api", protectedRoutes)
-app.use("/api/auth", authRoutes)
-const PORT = process.env.PORT || 5000
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
+    console.log("❌ CAUSE:");
+    console.log(error.cause);
+
+    console.log("❌ REASON:");
+    console.log(error.reason);
+
+    process.exit(1);
+  }
+};
+
+export default connectDB;
