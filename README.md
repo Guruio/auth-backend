@@ -4,7 +4,11 @@
 
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
 
+![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=white)
+
 ![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
+
+![bcrypt](https://img.shields.io/badge/bcrypt-4A4A4A?style=for-the-badge)
 
 ![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 # 🔐 Authentication Backend
